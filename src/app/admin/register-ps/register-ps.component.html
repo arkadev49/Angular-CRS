@@ -1,0 +1,220 @@
+<div id="main_content">
+  <button
+    routerLink="/admin/register-ps"
+    fragment="state"
+    class="button"
+    [ngClass]="mode === 'state' ? 'selected' : ''"
+  >
+    By State
+  </button>
+  <button
+    routerLink="/admin/register-ps"
+    fragment="district"
+    class="button"
+    [ngClass]="mode === 'district' ? 'selected' : ''"
+  >
+    By District
+  </button>
+  <button
+    routerLink="/admin/register-ps"
+    fragment="division"
+    class="button"
+    [ngClass]="mode === 'division' ? 'selected' : ''"
+  >
+    By Division
+  </button>
+  <button
+    routerLink="/admin/register-ps"
+    fragment="policeStation"
+    class="button"
+    [ngClass]="mode === 'policeStation' ? 'selected' : ''"
+  >
+    By Police Station
+  </button>
+  <button
+    style="float: right"
+    routerLink="/admin/register-ps"
+    fragment="show"
+    class="button"
+    [ngClass]="mode === 'show' ? 'selected' : ''"
+  >
+    SHOW
+  </button>
+
+  <div>
+    <div [ngSwitch]="mode">
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'state'">
+        ADD POLICE STATION BY NEW STATE
+      </h3>
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'district'">
+        ADD POLICE STATION BY NEW DISTRICT
+      </h3>
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'division'">
+        ADD POLICE STATION BY NEW DIVISION
+      </h3>
+      <h3
+        style="padding: 10px 0; margin: 10px 0"
+        *ngSwitchCase="'policeStation'"
+      >
+        ADD POLICE STATION BY I'TS NAME
+      </h3>
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'show'">
+        LIST OF ALL PS U/S
+      </h3>
+    </div>
+    <hr />
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="mode !== 'show'">
+      <div class="list-group">
+        <div class="main-block">
+          <div class="row">
+            <div class="col">
+              <label class="form-label">State : </label>
+            </div>
+            <div class="col">
+              <input
+                *ngIf="mode === 'state'"
+                class="form-control"
+                type="text"
+                placeholder="State"
+                required
+                ngModel
+                name="state"
+              />
+              <select
+                required
+                *ngIf="mode !== 'state'"
+                class="form-select"
+                name="state"
+                ngModel
+                (change)="onStateChanged(f)"
+              >
+                <option selected value="">Select State</option>
+                <option *ngFor="let state of states" value="{{ state }}">
+                  {{ state }}
+                </option>
+                )}
+              </select>
+              <br *ngIf="mode === 'state'" /><br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">District : </label>
+            </div>
+            <div class="col">
+              <input
+                *ngIf="mode === 'district' || mode === 'state'"
+                class="form-control"
+                type="text"
+                placeholder="District"
+                required
+                ngModel
+                name="district"
+              />
+              <select
+                (change)="onDistrictChange(f)"
+                required
+                *ngIf="mode !== 'district' && mode !== 'state'"
+                class="form-select"
+                name="district"
+                ngModel
+              >
+                <option selected value="">Select District</option>
+                <option
+                  *ngFor="let district of districts"
+                  value="{{ district }}"
+                >
+                  {{ district }}
+                </option>
+                )}
+              </select>
+              <br *ngIf="mode === 'district' || mode === 'state'" /><br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">Division : </label>
+            </div>
+            <div class="col">
+              <input
+                *ngIf="
+                  mode === 'division' || mode === 'district' || mode === 'state'
+                "
+                class="form-control"
+                type="text"
+                placeholder="Division"
+                required
+                ngModel
+                name="division"
+              />
+              <select
+                required
+                *ngIf="
+                  mode !== 'division' && mode !== 'district' && mode !== 'state'
+                "
+                class="form-select"
+                name="division"
+                ngModel
+              >
+                <option selected value="">Select Division</option>
+                <option
+                  *ngFor="let division of divisions"
+                  value="{{ division }}"
+                >
+                  {{ division }}
+                </option>
+                )}
+              </select>
+              <br
+                *ngIf="
+                  mode === 'division' || mode === 'district' || mode === 'state'
+                "
+              /><br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label class="form-label">Police Station : </label>
+            </div>
+            <div class="col">
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Police Station"
+                required
+                ngModel
+                name="policeStation"
+              />
+              <br /><br />
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="submit" style="float: right" [disabled]="f.invalid">
+        Submit
+      </button>
+    </form>
+    <div class="list-group" *ngIf="mode==='show' && tableLoaded">
+      <div style="margin: 1rem auto">
+        <div class="row">
+          <table style="border: 1px solid black">
+            <tr style="border: 1px solid black">
+              <th class="table-class"><b>Index</b></th>
+              <th class="table-class wdth-200"><b>State</b></th>
+              <th class="table-class wdth-200"><b>District</b></th>
+              <th class="table-class wdth-200"><b>Division</b></th>
+              <th class="table-class wdth-200"><b>Police Station</b></th>
+            </tr>
+            <tr  *ngFor="let it of showArray; let i = index">
+              <td class="table-class">{{i+1}}</td>
+              <td class="table-class wdth-200">{{it.state}}</td>
+              <td class="table-class wdth-200">{{it.district}}</td>
+              <td class="table-class wdth-200">{{it.division}}</td>
+              <td class="table-class wdth-200">{{it.policeStation}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

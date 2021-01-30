@@ -1,0 +1,58 @@
+<div class="topnav">
+  <a
+    routerLinkActive="active"
+    routerLink="/"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    <i class="fa fa-fw fa-home"></i>Home</a
+  >
+
+  <a
+    routerLinkActive="active"
+    routerLink="/police/complaints"
+    [routerLinkActiveOptions]="{ exact: true }"
+    *ngIf="user === 'POLICE'"
+    >Complaints</a
+  >
+
+  <a
+    routerLinkActive="active"
+    routerLink="/admin/register-ps"
+    [routerLinkActiveOptions]="{ exact: true }"
+    *ngIf="user === 'ADMIN'"
+    >Register PS</a
+  >
+
+  <a
+    routerLinkActive="active"
+    routerLink="/admin/police/register"
+    [routerLinkActiveOptions]="{ exact: true }"
+    *ngIf="user === 'ADMIN'"
+    >Register PO</a
+  >
+
+  <a routerLinkActive="active" routerLink="/download">Downloads</a>
+
+  <a routerLink="/about" routerLinkActive="active" href="https://ncrb.gov.in/"
+    >About</a
+  >
+
+  <a
+    href="https://docs.google.com/forms/d/e/1FAIpQLSeHpKRsuRqIypHkTVGaJMM2-AMAJFaxB55UdJ8Ttvng2crbFg/viewform"
+    style="cursor: pointer"
+    >Contact Us</a
+  >
+
+  <a
+    style="float: right"
+    routerLinkActive="active"
+    routerLink="/login"
+    *ngIf="!user"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Login</a
+  >
+
+  <a style="float: right; cursor: pointer" *ngIf="user" (click)="onLogout()"
+    >Logout</a
+  >
+</div>

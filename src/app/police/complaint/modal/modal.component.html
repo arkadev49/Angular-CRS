@@ -1,0 +1,26 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<div class="dialog-box">
+  <div class="w3-modal-content w3-card-4">
+    <form #f="ngForm" (ngSubmit)="onReject(f)">
+      <header class="w3-container">
+        <span class="w3-button w3-display-topright">&times;</span>
+        <h3 style="text-transform: uppercase; padding: 10px 0 0 10px;">{{ modalTitle }}</h3>
+      </header>
+      <div class="w3-container">
+        <br/>
+        <label for="reason"></label>
+        <textarea name="message" [minlength]="contentMinLength" required ngModel id="reason"
+                  placeholder="Your Text Here..."></textarea>
+        <p>Length: {{f.controls.message.value.length}}</p>
+        <p *ngIf="(f.controls.message? f.controls.message.value.length < contentMinLength : false) && f.touched" style="color: red">Must
+          Contain {{contentMinLength}} characters</p>
+      </div>
+      <footer class="w3-container w3-">
+        <div class="w3-section w3-right">
+          <button class="w3-button btn btn-blue" (click)="onReject(f)" [disabled]="f.invalid">{{ accept }}</button>
+          <button class="w3-button btn" (click)="onCancel()">Cancel</button>
+        </div>
+      </footer>
+    </form>
+  </div>
+</div>

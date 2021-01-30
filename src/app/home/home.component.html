@@ -1,0 +1,95 @@
+<div class="d-flex h-100 text-center text-white bg-dark my-class">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h3 class="pointer float-md-start mb-0">
+          <img
+            src="../../assets//images//police.svg"
+            height="35"
+            style="margin-top: -5px; margin-right: 10px"
+          />CRS
+        </h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            class="pointer nav-link active"
+            aria-current="page"
+            >Home</a
+          >
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSeHpKRsuRqIypHkTVGaJMM2-AMAJFaxB55UdJ8Ttvng2crbFg/viewform"
+            class="pointer nav-link"
+            >Contact</a
+          >
+          <a
+            routerLink="/about"
+            routerLinkActive="active"
+            class="pointer nav-link"
+            >About</a
+          >
+          <a
+            routerLink="/download"
+            routerLinkActive="active"
+            class="pointer nav-link"
+            >Downloads</a
+          >
+          <a
+            *ngIf="auth"
+            routerLink="/login"
+            routerLinkActive="active"
+            class="pointer nav-link"
+            >Portal</a
+          >
+          <a
+            *ngIf="!auth"
+            style="margin-top: -3px"
+            routerLink="/login"
+            routerLink="active"
+            class="pointer btn mx-3 px-2 btn-sm btn-secondary fw-bold border-white bg-white"
+            style="font-size: 1rem"
+            >Login</a
+          >
+          <a
+            *ngIf="auth"
+            style="margin-top: -3px"
+            (click)="onLogout()"
+            class="pointer btn mx-3 px-2 btn-sm btn-secondary fw-bold border-white bg-white"
+            style="font-size: 1rem"
+            >Logout</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main class="px-3">
+      <h1>
+        Welcome to CRS<br />
+        Admin & Police Section
+      </h1>
+      <pre class="lead" style="font-size: 15px">
+        “Law enforcement officers are never ‘off duty.’ They are dedicated public 
+        servants who are sworn to protect public safety at any time and place that 
+        the peace is threatened. They need all the help that they can get.” 
+                                               
+                                                               - Barbara Boxer
+      </pre>
+      <p class="lead">
+        <a
+          href="https://www.mha.gov.in/commoncontent/law-and-order"
+          class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+          >Learn more</a
+        >
+      </p>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+      <p>
+        A Digital India Initiaitve for
+        <a href="https://india.gov.in/" class="text-white"
+          >Government of India</a
+        >, by <a href="#" class="text-white">TEAM SPARK</a>.
+      </p>
+    </footer>
+  </div>
+</div>

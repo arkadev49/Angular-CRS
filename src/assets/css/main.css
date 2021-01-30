@@ -1,0 +1,117 @@
+* {
+  outline: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+input:focus {
+  border: 3px solid #555;
+}
+.note {
+  text-align: center;
+  height: 60px;
+  background: #12375f;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: bold;
+  line-height: 80px;
+}
+.form-content
+{
+  padding: 5%;
+  border: 1px solid #ced4da;
+  margin-bottom: 2%;
+}
+.form-control{
+  border-radius:1.5rem;
+}
+.btnSubmit0
+{
+  border:none;
+  border-radius:1.5rem;
+  padding: 1%;
+  width: 20%;
+  cursor: pointer;
+  background: #12375f;
+  color: #fff;
+}
+#myForm{
+  font-family: "Times New Roman", Times, serif;
+}
+
+.message {
+  font-weight: bold;
+  margin-left: 1.2em;
+  padding-top: 1%;
+}
+
+.login-container{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.login-form-1{
+  padding: 5%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ng-background {
+  background: #12375f!important;
+  transform: translateY(-20px)!important;
+  transition: background-color 0.3s;
+}
+
+.ng-background h3 {
+  color: #fff!important;
+}
+
+.ng-background .btnSubmit {
+  font-weight: 800!important;
+  background-color: #fff;
+  color: #12375f!important;
+}
+
+
+.login-form-1, .login-form-2{
+  max-height: 70vh;
+  cursor: pointer;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.login-form-1 h3, .login-form-2 h3{
+  color: #333;
+  text-align: center;
+}
+.login-form-1 .btnSubmit, .login-form-2 .btnSubmit{
+  font-weight: 600;
+  color: #fff;
+}
+.login-form-2{
+  padding: 5%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-container form{
+  padding: 8%;
+}
+.btnSubmit
+{
+  width: 50%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+}
+
+.message0{
+  font-weight: bold;
+  padding-top: 1rem;
+}

@@ -1,0 +1,146 @@
+<app-forget-password *ngIf="forgetPassword"></app-forget-password>
+<div class="login-component">
+  <div class="container login-container">
+    <div class="row">
+      <div
+        (click)="onToggleRole(p, c, true)"
+        class="col-md-6 login-form-1"
+        [ngClass]="admin ? 'ng-background' : ''"
+      >
+        <h3>Admin Login</h3>
+
+        <form (ngSubmit)="onAdminLogin(c)" #c="ngForm">
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              ngModel
+              required
+              email
+              class="form-control"
+              placeholder="Your Email *"
+            />
+            <p
+              *ngIf="
+                c.form.controls.email &&
+                c.form.controls.email.invalid &&
+                c.form.controls.email.touched
+              "
+              class="helper-text"
+            >
+              Must be a Valid Email Address
+            </p>
+          </div>
+
+          <div class="form-group">
+            <input
+              name="password"
+              ngModel
+              required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              type="password"
+              class="form-control"
+              placeholder="Your Password *"
+            />
+            <div
+              class="helper-text"
+              *ngIf="
+                c.form.controls.password &&
+                c.form.controls.password.invalid &&
+                c.form.controls.password.touched
+              "
+            >
+              Password must be<br />
+              Minimum 8 Characters<br />
+              1 digit, 1 uppercase and 1 lowercase<br />
+            </div>
+          </div>
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btnSubmit"
+              [ngClass]="!admin || c.invalid ? 'disabled' : ''"
+              [disabled]="!admin || c.invalid"
+            >
+              Login
+            </button>
+          </div>
+          <div class="form-group" *ngIf="admin">
+            <a class="ForgetPwd" (click)="onForgetPassword()"
+              >Forget Password?</a
+            >
+          </div>
+        </form>
+      </div>
+      <div
+        (click)="onToggleRole(p, c, false)"
+        class="col-md-6 login-form-2"
+        [ngClass]="!admin ? 'ng-background' : ''"
+      >
+        <h3>Police Login</h3>
+        <form (ngSubmit)="onPoliceLogin(p)" #p="ngForm">
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Your Email *"
+              name="email"
+              ngModel
+              email
+              required
+            />
+            <p
+              *ngIf="
+                p.form.controls.email &&
+                p.form.controls.email.invalid &&
+                p.form.controls.email.touched
+              "
+              class="helper-text"
+            >
+              Must be a Valid Email Address
+            </p>
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Your Password *"
+              name="password"
+              ngModel
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              required
+            />
+            <div
+              class="helper-text"
+              *ngIf="
+                p.form.controls.password &&
+                p.form.controls.password.invalid &&
+                p.form.controls.password.touched
+              "
+            >
+              Password must be<br />
+              Minimum 8 Characters<br />
+              1 digit, 1 uppercase and 1 lowercase<br />
+            </div>
+          </div>
+          <div class="form-group">
+            <button
+              type="submit"
+              class="btnSubmit"
+              [ngClass]="admin || p.invalid ? 'disabled' : ''"
+              [disabled]="admin || p.invalid"
+            >
+              Login
+            </button>
+          </div>
+          <div class="form-group" *ngIf="!admin">
+            <a class="ForgetPwd" (click)="onForgetPassword()"
+              >Forget Password?</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

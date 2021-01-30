@@ -1,0 +1,51 @@
+.dialog-box {
+  z-index: 100;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.w3-modal-content {
+  border-radius: 0.5rem !important;
+}
+
+@media (min-width: 993px) {
+  .w3-modal-content {
+    width: auto !important;
+    min-width: 600px;
+  }
+}
+
+textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 12px 25px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+.btn {
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.btn-blue {
+  background-color: #12375f !important;
+  color: white !important;
+  margin-right: 0.25rem;
+}
+
+.btn-blue:hover {
+  background-color: rgba(18, 55, 95, 0.25) !important;
+  color: black !important;
+}

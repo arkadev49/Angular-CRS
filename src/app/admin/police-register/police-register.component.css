@@ -1,0 +1,26 @@
+.register-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
+}
+
+.disabled {
+  background-color: rgba(0, 0, 0, 0.25)!important;
+  cursor: not-allowed!important;
+}
+
+.form .form-content {
+  border-radius: 0 0 1rem 1rem;
+}
+
+.form .note {
+  border-radius: 1rem 1rem 0 0;
+}
+
+@media screen and (max-width: 990px) {
+  .register-form {
+    display: block;
+  }
+
+}

@@ -1,0 +1,103 @@
+<div id="main_content">
+  <button
+    class="button"
+    routerLink="/police/complaints"
+    fragment="pending"
+    [ngClass]="mode === 'pending' ? 'selected' : 'notselected'"
+  >
+    Pending Complaints
+  </button>
+  <button
+    class="button"
+    routerLink="/police/complaints"
+    fragment="active"
+    [ngClass]="mode === 'active' ? 'selected' : 'notselected'"
+  >
+    Active Complaints
+  </button>
+  <button
+    class="button"
+    routerLink="/police/complaints"
+    fragment="resolved"
+    [ngClass]="mode === 'resolved' ? 'selected' : 'notselected'"
+  >
+    Resolved Complaints
+  </button>
+  <button
+    class="button"
+    routerLink="/police/complaints"
+    fragment="rejected"
+    [ngClass]="mode === 'rejected' ? 'selected' : 'notselected'"
+  >
+    Rejected Complaints
+  </button>
+  <h3 style="float: right; color: black">{{ policeStation }}</h3>
+
+  <div>
+    <div [ngSwitch]="mode">
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'pending'">
+        PENDING COMPLAINTS
+      </h3>
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'resolved'">
+        RESOLVED COMPLAINTS
+      </h3>
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'rejected'">
+        REJECTED COMPLAINTS
+      </h3>
+      <h3 style="padding: 10px 0; margin: 10px 0" *ngSwitchCase="'active'">
+        ACTIVE COMPLAINTS
+      </h3>
+    </div>
+    <hr />
+    <div
+      class="list-group"
+      *ngFor="
+        let complaint of mode === 'pending'
+          ? pendingArray
+          : mode === 'resolved'
+          ? resolvedArray
+          : mode === 'rejected'
+          ? rejectedArray
+          : activeArray
+      "
+    >
+      <a
+        [routerLink]="'/police/complaints/' + complaint.id"
+        class="list-group-item list-group-item-action flex-column align-items-start"
+      >
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">TICKET ID - #{{ complaint.id.toUpperCase() }}</h5>
+          <div style="text-align: right">
+            <p>
+              <small
+                >DATE : {{ complaint.createdAt | date: 'fullDate' }}
+              </small>
+            </p>
+            <p class="row">
+              <small>TYPE : {{ complaint.type }}</small>
+            </p>
+          </div>
+        </div>
+        <div class="mb-1">
+          <p>TITLE : {{ complaint.title }}</p>
+          <p>LOCATION : {{ complaint.location }}</p>
+        </div>
+        <small><b>STATUS : </b> {{ complaint.status }}</small>
+        <div [ngSwitch]="mode">
+          <fa-icon
+            *ngSwitchCase="'pending'"
+            [icon]="faSpinner"
+            class="fa-spin"
+            style="font-size: 24px; float: right"
+          ></fa-icon>
+          <fa-icon
+            *ngSwitchCase="'resolved'"
+            [icon]="faCheckCircle"
+            style="font-size: 36px; color: green; float: right"
+          ></fa-icon>
+          <i *ngSwitchCase="'rejected'" style="float: right">&#x274C;</i>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<form class="form-style-9" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <h1 style="text-align: center">Complaint Resolution Form</h1>
+  <ul>
+    <h3>#Complaint ID - #{{ complaintId | uppercase }}</h3>
+    <h4>Criminal's Details</h4>
+    <li>
+      <input
+        type="text"
+        name="criminalName"
+        id="n"
+        class="field-style field-split align-left"
+        placeholder="Criminal's Name"
+        ngModel
+        required
+      />
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/jpg, image/jpeg, image/png"
+        name="criminalImage"
+        class="field-style field-split align-right"
+        required
+        ngModel
+      />
+    </li>
+    <li>
+      <select
+        type="text"
+        name="state"
+        class="field-style"
+        style="margin-right: 10px"
+        style="min-width: 28%; margin-right: 0.8rem"
+        placeholder="State"
+        (change)="onStateChanged(f)"
+        ngModel
+        required
+      >
+        <option value="" default>Select State</option>
+        <option *ngFor="let state of states" value="{{ state }}">
+          {{ state }}
+        </option>
+      </select>
+      <select
+        type="text"
+        name="district"
+        class="field-style"
+        style="margin-right: 10px"
+        placeholder="District"
+        style="min-width: 28%; margin-right: 0.8rem"
+        ngModel
+        required
+      >
+        <option value="" defautl>Select District</option>
+        <option *ngFor="let district of districts" value="{{ district }}">
+          {{ district }}
+        </option>
+      </select>
+      <input
+        type="text"
+        name="criminalAddress"
+        class="field-style"
+        style="min-width: 40%"
+        placeholder="Address"
+        ngModel
+        required
+      />
+    </li>
+    <li>
+      <input
+        type="textarea"
+        name="criminalDetails"
+        class="field-style"
+        style="padding: 15px; width: 100%"
+        placeholder="More Details"
+        ngModel
+        minlength="10"
+        required
+      />
+    </li>
+    <li>
+      <textarea
+        name="description"
+        minlength="15"
+        class="field-style"
+        placeholder="Brief Note/Description of the case resolved...."
+        ngModel
+        required
+      ></textarea>
+    </li>
+    <label for="img">Case Documents (if any) :</label>
+    <input type="file" id="img" name="img" accept="image/*" />
+    <li style="margin-left: 40vh">
+      <button type="submit" style="margin-top: 10px" [disabled]="f.invalid">
+        Submit Button
+      </button>
+    </li>
+  </ul>
+</form>

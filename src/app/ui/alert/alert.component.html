@@ -1,0 +1,16 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+  <h3>{{ alertTitle }}</h3>
+  <hr />
+  <p>
+    {{
+      alertMessage
+        ? alertMessage
+        : 'There is a Problem with your Internet Connectivity'
+    }}
+  </p>
+  <br />
+  <div class="alert-box-controls">
+    <button class="btn" (click)="onClose()">Close</button>
+  </div>
+</div>
